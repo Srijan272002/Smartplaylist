@@ -1,4 +1,4 @@
-declare module '@groq/groq-sdk' {
+declare module 'groq-sdk' {
   export interface ChatMessage {
     role: 'system' | 'user' | 'assistant';
     content: string;
@@ -6,7 +6,7 @@ declare module '@groq/groq-sdk' {
 
   export interface ChatCompletionChoice {
     message?: ChatMessage;
-    index: number;
+    index?: number;
     finish_reason?: string;
   }
 
@@ -15,21 +15,31 @@ declare module '@groq/groq-sdk' {
     choices: ChatCompletionChoice[];
     created: number;
     model: string;
+    usage?: {
+      prompt_tokens: number;
+      completion_tokens: number;
+      total_tokens: number;
+    };
   }
 
-  export interface ChatCompletionOptions {
+  export interface GroqOptions {
+    apiKey: string;
+    dangerouslyAllowBrowser?: boolean;
+  }
+
+  export interface ChatCompletionParams {
     messages: ChatMessage[];
     model: string;
     temperature?: number;
     max_tokens?: number;
-    stream?: boolean;
+    stop?: string[];
   }
 
   export class Groq {
-    constructor(config: { apiKey: string });
+    constructor(options: GroqOptions);
     chat: {
       completions: {
-        create(options: ChatCompletionOptions): Promise<ChatCompletion>;
+        create(params: ChatCompletionParams): Promise<ChatCompletion>;
       };
     };
   }

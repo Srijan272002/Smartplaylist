@@ -1,4 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+import forms from '@tailwindcss/forms'
+import typography from '@tailwindcss/typography'
+import aspectRatio from '@tailwindcss/aspect-ratio'
+
 export default {
   content: [
     "./index.html",
@@ -46,6 +50,8 @@ export default {
       animation: {
         'fade-in': 'fade-in 0.5s ease-out',
         'slide-in': 'slide-in 0.5s ease-out',
+        'smoke-left': 'smoke-left 3s ease-in-out infinite',
+        'smoke-right': 'smoke-right 3s ease-in-out infinite',
       },
       keyframes: {
         'fade-in': {
@@ -56,12 +62,22 @@ export default {
           '0%': { transform: 'translateY(-10px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+        'smoke-left': {
+          '0%': { transform: 'translateX(0) scale(1)', opacity: '0' },
+          '50%': { transform: 'translateX(-20px) scale(1.2)', opacity: '0.5' },
+          '100%': { transform: 'translateX(-40px) scale(1)', opacity: '0' },
+        },
+        'smoke-right': {
+          '0%': { transform: 'translateX(0) scale(1)', opacity: '0' },
+          '50%': { transform: 'translateX(20px) scale(1.2)', opacity: '0.5' },
+          '100%': { transform: 'translateX(40px) scale(1)', opacity: '0' },
+        },
       },
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/aspect-ratio'),
+    forms,
+    typography,
+    aspectRatio,
   ],
 } 
