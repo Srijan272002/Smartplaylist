@@ -37,7 +37,7 @@ export function HomePage() {
         {/* Content */}
         <div className="container mx-auto px-4 text-center relative z-10">
           <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#1DB954] to-[#E8E8E8] drop-shadow-[0_0_25px_rgba(29,185,84,0.3)]">
-            AI-Powered Playlist Magic
+            SMARTPLAYLIST
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-[#E8E8E8] max-w-2xl mx-auto drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             Create personalized playlists that match your mood, powered by artificial intelligence
